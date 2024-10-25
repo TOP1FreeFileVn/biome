@@ -1,0 +1,687 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Biomes</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="60d87750-c6af-492a-ab83-888ca7dd86a7" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="3yuktlayvng61.webp"/></div><h1 class="page-title">Biomes</h1><p class="page-description"></p></header><div class="page-body"><ul id="1122ce6e-66d0-4181-b11b-58186d358a67" class="toggle"><li><details open=""><summary>Chú thích các từ phổ biến:</summary><ul id="e1d5dcdf-3b63-4379-8297-92b2d372ed2c" class="bulleted-list"><li style="list-style-type:disc">Spawn: xuất hiện, tự sinh ra</li></ul><ul id="16d8035e-a2cf-4f35-8923-d7ea1cbbc82f" class="bulleted-list"><li style="list-style-type:disc">Space: phía trên bề mặt, ngoài (rìa) vũ trụ</li></ul><ul id="f655583d-8958-4c2b-a6d1-0844433e44bc" class="bulleted-list"><li style="list-style-type:disc">Surface: bề mặt (feet 0)</li></ul><ul id="0c738e99-20b1-4452-b61e-8a2cd24e2392" class="bulleted-list"><li style="list-style-type:disc">Underground: dưới đất</li></ul><ul id="f8fecc61-ce52-43d3-bb14-c6088db07352" class="bulleted-list"><li style="list-style-type:disc">Biome: khu sinh học/vùng đất mang tính chất đặc biệt</li></ul><ul id="c227894a-c208-4149-88d1-da60708caad6" class="bulleted-list"><li style="list-style-type:disc">Chest: rương</li></ul><ul id="90d85bc4-5850-4f34-826a-16401964c2c8" class="bulleted-list"><li style="list-style-type:disc">Cave: hang</li></ul><ul id="ac572f42-dcb6-4ebd-9569-7eea54300441" class="bulleted-list"><li style="list-style-type:disc">Corrupt: tha hóa</li></ul><ul id="eb69467c-5835-4979-8e19-7da4a58c106a" class="bulleted-list"><li style="list-style-type:disc">Crimson: ~ bị biến đổi</li></ul><ul id="83028ad2-6381-4bd3-8209-5a4f769cc8e1" class="bulleted-list"><li style="list-style-type:disc">Craft: rèn, chế tạo</li></ul><ul id="19634e93-7a2c-484d-b736-7068a046f95f" class="bulleted-list"><li style="list-style-type:disc">Boss: trùm</li></ul><ul id="289d7164-1b3c-4098-8b9f-5dcd3aa4facc" class="bulleted-list"><li style="list-style-type:disc">Materials: các vật liệu</li></ul></details></li></ul><ul id="a10064d2-dcba-4a60-b6c9-696e501e093d" class="toggle"><li><details open=""><summary>Space (rìa vũ trụ)</summary><figure id="1288f238-6219-80dc-9d7b-e799bfdffb7a" class="image"><a href="BiomeBannerSpace.webp"><img style="width:720px" src="BiomeBannerSpace.webp"/></a></figure><ul id="f4362c6f-c860-4743-a8c3-bf57b9a263d7" class="bulleted-list"><li style="list-style-type:disc">Là khu vực ở trên cùng thế giới, cách mặt đất khoảng 700 feet, với màn đêm, mặt trời và các vì sao. Trọng lực ở đây sẽ yếu hơn so với phía dưới</li></ul><ul id="3fa45d1c-774f-49de-aa5a-d2c6a535c032" class="bulleted-list"><li style="list-style-type:disc">Harpies spawn ở đây lúc đầu game, trong khi Arch Wyverns và Martian Probes xuất hiện trong hardmode.</li></ul></details></li></ul><ul id="519c557b-2d67-4c51-afe6-33d2004c6723" class="toggle"><li><details open=""><summary>Surface &amp; Underground (mặt đất &amp; dưới đất)</summary><p id="b1b801e0-1a55-47b7-bad6-fae1087a6fb6" class="">Dưới Space là Surface và Underground</p><ul id="7a7ccd96-895f-4ab7-8d24-1072824b65a4" class="toggle"><li><details open=""><summary>Forest (rừng)</summary><figure id="1288f238-6219-807c-ac00-d8382aaecb4f" class="image"><a href="Flower_Patch.webp"><img style="width:651.953125px" src="Flower_Patch.webp"/></a></figure><ul id="8eccff94-b8a5-4dda-9f89-72d0e7a344e2" class="bulleted-list"><li style="list-style-type:disc">Biome phổ biến nhất, cũng là nơi người chơi thường spawn khi bắt đầu thế giới mới</li></ul><ul id="27e72929-ce34-466c-aaa5-4e2ed7a31809" class="bulleted-list"><li style="list-style-type:disc">Cỏ và đất, từ đó có các nấm, cây,…, xuất hiện khi không có biome khác thay thế</li></ul></details></li></ul><ul id="ac7e804f-5822-436b-8f19-74a84896930e" class="toggle"><li><details open=""><summary>Snow Biome (vùng đất tuyết)</summary><figure id="1288f238-6219-80dd-8494-fd079730924c" class="image"><a href="BiomeBannerSnow.webp"><img style="width:768px" src="BiomeBannerSnow.webp"/></a></figure><ul id="8183cb9f-5221-4028-9a30-42c0e8ff85c8" class="bulleted-list"><li style="list-style-type:disc">Biome mang nền mùa đông được cấu tạo chủ yếu từ Tuyết (Snow) và Ice Blocks (khối đá). Tuyết rơi liên tục (chỉ mang tính thẩm mỹ)</li></ul><ul id="3520e7e1-9704-4f99-837c-003101e6592a" class="bulleted-list"><li style="list-style-type:disc">Luôn đặt ở vị trí cùng bên với Dungeon và phía đối diện so với Jungle</li></ul></details></li></ul><ul id="a656095f-d178-4751-a33c-65729766a989" class="toggle"><li><details open=""><summary>Desert (sa mạc)</summary><figure id="1288f238-6219-8086-b606-dc97d548cb43" class="image"><a href="BiomeBannerDesert.webp"><img style="width:816px" src="BiomeBannerDesert.webp"/></a></figure><ul id="ef1e90e9-3a8d-4cee-b24b-be0d11673e8b" class="bulleted-list"><li style="list-style-type:disc">Là nơi trải dài cát, cực kì ít thực vật với sự xuất hiện đặc biệt của Xương rồng (Cacti)</li></ul><ul id="8716e8d1-3b06-45bd-a1b3-137dd90b7d7b" class="bulleted-list"><li style="list-style-type:disc">Luôn có nhiều Desert được khởi tạo, và luôn có ít nhất một Underground Desert (Sa mạc dưới lòng đất)</li></ul></details></li></ul><ul id="175c6a26-ff95-4293-9f9a-c064cc645116" class="toggle"><li><details open=""><summary>Corruption &amp; Crimson (khu vực tha hóa, biến đổi)</summary><div id="1288f238-6219-8039-99e6-d9ec86db0e91" class="column-list"><div id="1288f238-6219-807b-b7f9-e12af9aae655" style="width:50%" class="column"><figure id="1288f238-6219-80bc-9115-dbc5540889a7" class="image"><a href="BiomeBannerCorruption.webp"><img style="width:336px" src="BiomeBannerCorruption.webp"/></a></figure></div><div id="1288f238-6219-8028-a783-e41313bdecda" style="width:49.99999999999999%" class="column"><figure id="1288f238-6219-8025-bd88-e617c7b7bc25" class="image"><a href="BiomeBannerCrimson.webp"><img style="width:336px" src="BiomeBannerCrimson.webp"/></a></figure></div></div><ul id="b85d7486-958d-4306-b539-918bcc0fa820" class="bulleted-list"><li style="list-style-type:disc">Một thế giới tràn ngập những Evil Biome - có thể xuất hiện là Crimson hoặc Corruption, nhưng không bao giờ là cả hai</li></ul><ul id="5534d358-85ba-45e0-9f47-5bded8299f92" class="bulleted-list"><li style="list-style-type:disc">Seed đặc biệt 05162020 - nơi cả hai cùng có thể xuất hiện</li></ul><ul id="b4b459e7-9036-4eec-a7c0-a5633a56b8ec" class="bulleted-list"><li style="list-style-type:disc">Cả hai nơi đều có nhiều loot quan trọng, các vật liệu để craft và các boss</li></ul><ul id="e27f25c4-379f-4bac-9eef-f7ef577ad0a2" class="bulleted-list"><li style="list-style-type:disc">Trên nhiều tảng người chơi có thể lựa chọn 1 trong 2 biome có thể xuất hiện trong thế giới của mình khi đã đánh bại Wall of Flesh, còn theo mặc định tỉ lệ xuất hiện là 50/50</li></ul></details></li></ul><ul id="4a37d4ae-0b74-41cf-9e4a-e3723ffe0ce8" class="toggle"><li><details open=""><summary>Jungle (rừng rậm)</summary><figure id="1288f238-6219-8005-a0f9-fd0e563b926a" class="image"><a href="BiomeBannerJungle.webp"><img style="width:912px" src="BiomeBannerJungle.webp"/></a></figure><ul id="bbe2b52c-9b67-48a5-81e0-a910311855ee" class="bulleted-list"><li style="list-style-type:disc">Là một biome khó bao gồm Jungle Grass, Vines, Mud và Mahogany Trees (Cỏ rừng, dây leo, bùn và cây gụ)</li></ul><ul id="d7473af0-9d79-4d85-b64b-94a385f0058a" class="bulleted-list"><li style="list-style-type:disc">Bầu trời màu xanh lá nhạt</li></ul><ul id="f12fffcf-6842-49ef-86e2-2c4b68a65cb6" class="bulleted-list"><li style="list-style-type:disc">Cây gụ tự động xuất hiện mà không cần trồng acorns (quả sồi).</li></ul><ul id="76f3574c-2c78-4439-9cca-fe7c8b1230b3" class="bulleted-list"><li style="list-style-type:disc">Vị trí: Đối diện Snow Biome và Dungeon, cùng bên với Underground Desert</li></ul></details></li></ul><ul id="efa315c0-5cbb-4fb1-a250-6edcf1d5b4b1" class="toggle"><li><details open=""><summary>Dungeon (ngục)</summary><figure id="1288f238-6219-80a3-86d1-f587d98173ce" class="image"><a href="BiomeBannerDungeon.webp"><img style="width:960px" src="BiomeBannerDungeon.webp"/></a></figure><ul id="96c55ea6-53ef-4367-ae3f-7f71392ba120" class="bulleted-list"><li style="list-style-type:disc">Là một loại mê cung khó đi từ bề mặt đến những nơi gần Underworld (~địa ngục)</li></ul><ul id="28c43e2e-6b83-4987-a184-981d3084bd24" class="bulleted-list"><li style="list-style-type:disc">The Old Man ở cửa, đánh bại ông ấy để đánh bại Skeleton: cần thiết để đi vào bên trong</li></ul><ul id="b27599da-4784-4370-9971-017af8e7c774" class="bulleted-list"><li style="list-style-type:disc">Biome gồm nhiều những nơi phòng thủ khỏe và có khả năng one-hit (hạ trong 1 chiêu) người chơi</li></ul><ul id="dfa530ab-2fec-46c8-bf2c-e2c721d66f74" class="bulleted-list"><li style="list-style-type:disc">Loot trong Dungeon rất hiếm, có giá trị và không thể tìm ở nơi khác</li></ul><ul id="f22dae49-761b-4443-b718-f037b724e01d" class="bulleted-list"><li style="list-style-type:disc">Vị trí: Đối diện Jungle và cùng bên với Snow Biome</li></ul></details></li></ul><ul id="027e0698-d392-429f-a7c9-955fbae2d68e" class="toggle"><li><details open=""><summary>Ocean (đại dương)</summary><figure id="1288f238-6219-8036-b64e-e43d109f7a6f" class="image"><a href="BiomeBannerOcean.webp"><img style="width:768px" src="BiomeBannerOcean.webp"/></a></figure><ul id="cb8fda39-7560-4757-a18b-7f4d11b5dd2d" class="bulleted-list"><li style="list-style-type:disc">Là đại dương có sự xuất hiện của nhiều kẻ địch</li></ul><ul id="7ae5ef3e-defb-4f7d-bb85-d14d3560d176" class="bulleted-list"><li style="list-style-type:disc">Water chests (rương nước) chứa các loot của biển</li></ul><ul id="e453b100-be6f-4bd9-87d6-d63611322040" class="bulleted-list"><li style="list-style-type:disc">Vị trí: Có thể tìm thấy ở hai rìa ngang của thế giới</li></ul><ul id="e5303f49-5dc6-4b08-9965-7b3b22a49fe3" class="bulleted-list"><li style="list-style-type:disc">Duke Fishron có thể được triệu hồi ở đây với một cái Truffle Worm</li></ul><ul id="ec7d797c-3ad0-4f7e-943b-4d887c4f6366" class="bulleted-list"><li style="list-style-type:disc">Người chơi có thể sử dụng Magic Conch để dịch chuyển đến một Ocean</li></ul></details></li></ul><ul id="87b3c0dc-588e-4899-9ba7-51edbefbb9af" class="toggle"><li><details open=""><summary>Mushroom (vùng đất nấm)</summary><figure id="1288f238-6219-80a0-8aa6-f67754bf951a" class="image"><a href="BiomeBannerGlowingMushroom.webp"><img style="width:960px" src="BiomeBannerGlowingMushroom.webp"/></a></figure><ul id="a575b2b7-ea9d-4b01-9e42-5e8ebcd524dc" class="bulleted-list"><li style="list-style-type:disc">Không xuất hiện một cách tự nhiên, và chỉ có thể xuất hiện bằng cách sử dụng Mushroom Grass Seeds (tạm dịch: hạt giống cỏ nấm) hoặc Clentaminator với Dark Blue Solution ở bùn trên mặt đất</li></ul></details></li></ul></details></li></ul><ul id="63da1877-14db-4caf-8d07-394454acc975" class="toggle"><li><details open=""><summary>Cavern (khu vực hang)</summary><figure id="1288f238-6219-8030-b193-f8bf6f07c19b" class="image"><a href="BiomeBannerUndergroundDesert.webp"><img style="width:1056px" src="BiomeBannerUndergroundDesert.webp"/></a></figure><p id="604bfb4b-4ac3-4c05-81fb-c07295e4f984" class="">Là biome dưới lòng đất lớn bao gồm nhiều các loại biome nhỏ đa dạng</p><ul id="4c4e96a8-a583-46b6-a84a-adeb5782ef90" class="toggle"><li><details open=""><summary>Underground Desert (sa mạc dưới lòng đất)</summary><ul id="8277154c-4dad-4f20-aa11-6ae455abe017" class="bulleted-list"><li style="list-style-type:disc">Là biome khó ở dưới Desert bề mặt</li></ul><ul id="13f20a83-596e-46ca-9099-fb969a5e259c" class="bulleted-list"><li style="list-style-type:disc">Có hình dạng tròn hoặc oval và chứa nhiều loại Antlions cũng như kẻ địch Ai Cập cổ đại ở Hardmode</li></ul></details></li></ul><ul id="76a51d0e-c679-4ac1-950d-ed4aa3e3b9f6" class="toggle"><li><details open=""><summary>Underground Jungle (rừng rậm dưới mặt đất)</summary><figure id="1288f238-6219-8065-a510-fe789eecdd07" class="image"><a href="BiomeBannerUndergroundJungle.webp"><img style="width:1104px" src="BiomeBannerUndergroundJungle.webp"/></a></figure><ul id="69f8d774-1994-4425-a19f-6cbaaf0fb508" class="bulleted-list"><li style="list-style-type:disc">Là biome khó ở dưới Jungle bề mặt</li></ul><ul id="e37e99f6-8c19-4305-b56a-f581acc86c3c" class="bulleted-list"><li style="list-style-type:disc">Chứa nhiều thực vật và chất độc, cũng như loots và vật liệu crafting</li></ul><ul id="895e3280-47a7-452e-9392-2e5ed7e5974d" class="bulleted-list"><li style="list-style-type:disc">Ở hardmode, người chơi có thể khai thác Chlorophyte Ore</li></ul><ul id="65568cd0-e164-4417-83be-62630e08c21e" class="bulleted-list"><li style="list-style-type:disc">3 Boss lớn: Queen Bee ở Bee Hives, Plantera ở Plantera’s Bulbs, Golem ở Jungle Temple (đánh bại theo thứ tự).</li></ul></details></li></ul><ul id="caf2d0af-dc31-4798-b389-22bfa9f2d310" class="toggle"><li><details open=""><summary>Underground Mushroom (khu vực nấm dưới mặt đất)</summary><ul id="50f08a91-0d57-4cd3-bc0f-a9551b5687a5" class="bulleted-list"><li style="list-style-type:disc">Bao gồm Glowing Mushrooms (Nấm phát sáng) ở trên bùn, và nếu hang đủ lớn, có thể xuất hiện Giant Glowing Mushrooms</li></ul><ul id="335fabec-d2c6-405d-9517-135072e3a457" class="bulleted-list"><li style="list-style-type:disc">Là nơi duy nhất có thể thu thập Truffle Worms (sâu truffle)</li></ul></details></li></ul><ul id="8ceb580d-3d4b-4482-a62e-44b28aede3e3" class="toggle"><li><details open=""><summary>Ice </summary><figure id="1288f238-6219-806c-9084-cc69a57dd46e" class="image"><a href="BiomeBannerIce.webp"><img style="width:864px" src="BiomeBannerIce.webp"/></a></figure><ul id="0d71f6a2-5bf6-4efa-a11e-9773bace4950" class="bulleted-list"><li style="list-style-type:disc">Là phần ở dưới và nguy hiểm hơn của Snow Biome</li></ul><ul id="5cc7e36f-3752-4660-bcc5-11c57b9fbb49" class="bulleted-list"><li style="list-style-type:disc">Nhiều vách và nguồn nước sẽ có lớp băng mỏng phía trên, có thể chịu được khối lượng người chơi nhưng sẽ vỡ khi đáp đủ mạnh</li></ul><ul id="d5d6e4b3-77d0-4b3e-b2fa-0d3606c9b08c" class="bulleted-list"><li style="list-style-type:disc">Có thể tránh với Ice Skates, Frostspark Boots hoặc Terraspark Boots</li></ul><ul id="9867c57d-ef90-4ee2-b442-88358b3be384" class="bulleted-list"><li style="list-style-type:disc">Frozen chests (rương bằng) chứa là vật dụng băng</li></ul></details></li></ul><ul id="28aa6c38-ce7a-4d2b-8a90-cac3cd431324" class="toggle"><li><details open=""><summary>Glowing Moss (rêu phát sáng)</summary><figure id="1288f238-6219-809c-ac9e-f9ed128e3301" class="image"><a href="BiomeBannerGlowingMoss.webp"><img style="width:768px" src="BiomeBannerGlowingMoss.webp"/></a></figure><ul id="c1337e47-83b9-46a6-addb-76f9c4cc3883" class="bulleted-list"><li style="list-style-type:disc">Ở Cavern nhưng không thể tìm thấy ở dưới khu vực spawn</li></ul><ul id="1b0e1b7f-34d6-405c-afec-5c8b64a3247c" class="bulleted-list"><li style="list-style-type:disc">Đa số mảnh của Stone Block được bọc trong Krypton, Xenon hoặc Argon Moss</li></ul><ul id="f4fa058a-c339-4997-9f29-d8d7d645a6dc" class="bulleted-list"><li style="list-style-type:disc">Ban đầu sẽ lớn hơn với Moss Chamber</li></ul><ul id="cdb8fd4d-c1c4-49c7-8c9f-c074672650fd" class="bulleted-list"><li style="list-style-type:disc">Không có kẻ địch riêng biệt</li></ul></details></li></ul><ul id="72439a32-ef4c-496d-ba3c-b8a1827ba7ed" class="toggle"><li><details open=""><summary>Underworld</summary><figure id="1288f238-6219-80ba-8910-d8e0edd11190" class="image"><a href="BiomeBannerUnderworld.webp"><img style="width:864px" src="BiomeBannerUnderworld.webp"/></a></figure><ul id="0a4023a4-3b05-49d7-90d8-f1299ce1cc49" class="bulleted-list"><li style="list-style-type:disc">Ở đáy của thế giới, bao phủ bởi các hồ dung nham và xuất hiện thường xuyên các kẻ địch mạnh.</li></ul><ul id="0f0198e7-76a8-4f8b-9403-7677a2be0cb9" class="bulleted-list"><li style="list-style-type:disc">Có thể khai thác Hellstone ở đây.</li></ul><ul id="dea6a63e-f497-433e-9ff7-cd488716d334" class="bulleted-list"><li style="list-style-type:disc">Ruin Houses chứa các loot và nội thất có giá trị.</li></ul><ul id="d496fcc2-2387-4b5c-8ea0-4964d398e06d" class="bulleted-list"><li style="list-style-type:disc">Có thể triệu hồi Wall of Flesh boss ở đây để kích hoạt Hardmode</li></ul><ul id="a3bf29d5-c862-493b-88f1-80a2f05a113e" class="bulleted-list"><li style="list-style-type:disc">Ở Hardmore, the Tortured Soul spawns ở Underworld và có thể biến đổi thành the Tax Collector bằng cách sử dụng Purification Powder.</li></ul></details></li></ul></details></li></ul><ul id="15f5588b-bf30-4225-87b3-8673bf565c3b" class="toggle"><li><details open=""><summary>Hardmode </summary><p id="d8cecc53-f8ab-4342-acad-add801c3315d" class="">Các biome chỉ xuất hiện khi game chuyển sang chế độ Hardmode</p><ul id="875eddb9-b4d0-4c77-a725-bf6dfc2492d4" class="toggle"><li><details open=""><summary>The Hallow</summary><figure id="1288f238-6219-8005-832a-ce369674ca09" class="image"><a href="BiomeBannerHallow.webp"><img style="width:912px" src="BiomeBannerHallow.webp"/></a></figure><ul id="d02dcd7c-7102-4bf3-a0b2-f0cff0914fd7" class="bulleted-list"><li style="list-style-type:disc">Có thể coi là đối nghịch của Evil Biome, được tạo khi người chơi vào Hardmode </li></ul><ul id="c9915af5-f3c3-4eb6-866c-716f517f4d61" class="bulleted-list"><li style="list-style-type:disc">Dù nhìn có vẻ màu sắc nhưng vô cùng khó</li></ul></details></li></ul><ul id="49ea7041-82f9-4fb4-a284-ea82436e8790" class="toggle"><li><details open=""><summary>Underground Hallow</summary><figure id="1288f238-6219-808a-9e21-c0a8593e4c4a" class="image"><a href="BiomeBannerUndergroundHallow.webp"><img style="width:912px" src="BiomeBannerUndergroundHallow.webp"/></a></figure><ul id="5d34f578-52ef-47f0-843d-1ab3670e079d" class="toggle"><li><details open=""><summary>Ở dưới Hallow, có bản nhạc khác so với Hallow và chứa nhiều kẻ thù khó và đồ vật hiếm hơn như Souls of Light và Crystal Shards</summary></details></li></ul></details></li></ul><ul id="f5ed27c8-0380-4114-ada7-ee605709b157" class="toggle"><li><details open=""><summary>Underground Corruption</summary><figure id="1288f238-6219-8003-a953-d9270bec452a" class="image"><a href="BiomeBannerUndergroundCorruption.webp"><img style="width:912px" src="BiomeBannerUndergroundCorruption.webp"/></a></figure><ul id="34268501-0bab-4e22-aae2-7d24703f0a52" class="toggle"><li><details open=""><summary>Không phải lúc nào cũng ở dưới Corruption biome.</summary></details></li></ul><ul id="6f143b22-9cb8-485d-97c5-6def53f9daa8" class="toggle"><li><details open=""><summary>Có kẻ địch và bản nhạc khác so với biome phía trên.</summary></details></li></ul><ul id="2c3cf1ba-4b1b-4d3f-8350-744d941ba857" class="toggle"><li><details open=""><summary>Là nơi duy nhất chứa Souls of Night, drop bởi kẻ địch.</summary></details></li></ul></details></li></ul><ul id="b431095f-2fe6-4be4-ab9c-294bbe1d83ea" class="toggle"><li><details open=""><summary>Underground Crimson</summary><figure id="1288f238-6219-8041-8944-f59b7fc18a07" class="image"><a href="BiomeBannerUndergroundCrimson.webp"><img style="width:768px" src="BiomeBannerUndergroundCrimson.webp"/></a></figure><ul id="065944ae-7729-431e-be7e-ed8ed3ee4edc" class="toggle"><li><details open=""><summary>Gần như hoạt động giống hệt Crimson.</summary></details></li></ul><ul id="8acbea04-2c35-4950-9041-1bc725e51b8c" class="toggle"><li><details open=""><summary>Là nơi duy nhất kẻ địch drop Ichor.</summary></details></li></ul></details></li></ul><ul id="c0ae15d2-24de-460c-915f-2deb9965e9eb" class="toggle"><li><details open=""><summary>Corrupted/Crimson Deserts &amp; Hallowed Deserts</summary><ul id="b8b3a712-a452-4fd0-b3f7-4917b42d74e0" class="toggle"><li><details open=""><summary>Một vài Deserts sẽ bị Corrupted (tha hóa), Crimsoned (bị biến đổi(?)) hoặc bị Hallowed</summary></details></li></ul><ul id="08671edd-1f51-4fdc-a56f-cb1a97c6e53a" class="toggle"><li><details open=""><summary>Có background riêng, spawn các phiên bản đặc biệt của Mummy</summary></details></li></ul><ul id="36ebeeca-efeb-4478-b30b-c73cf4e2e71d" class="toggle"><li><details open=""><summary>Sand (Cát) được thay thế bởi Ebonsand, Crimsand hoặc Pearlsand</summary></details></li></ul><ul id="c88a44e5-8922-413a-9a4a-da447158a5fd" class="toggle"><li><details open=""><summary>Ở pre-Hardmode có thể được spawn với một Corrupt hoặc Crimson Desert</summary></details></li></ul></details></li></ul></details></li></ul><ul id="0a6127c3-76a2-4239-9e11-89aa2b8277c0" class="toggle"><li><details open=""><summary>Mini-Biomes (Biome nhỏ)</summary><p id="d15e9171-5b90-4333-b591-abbc678bdbbe" class="">Nhỏ hơn về số lượng và kích cỡ, có đặc tính và spawn quái vật riêng biệt</p><ul id="a42256ee-2017-4017-a01e-92af80eb9fb6" class="toggle"><li><details open=""><summary>Bee Hive</summary><figure id="1288f238-6219-80b9-8355-cb1f4ea8a999" class="image"><a href="BiomeBannerHive.webp"><img style="width:816px" src="BiomeBannerHive.webp"/></a></figure><ul id="93431bd5-f1c5-4549-95db-c638e988164e" class="toggle"><li><details open=""><summary>Ở Underground Jungle</summary></details></li></ul><ul id="8bf12a60-96aa-43b4-a187-0752d9a71cba" class="toggle"><li><details open=""><summary>Làm từ Hive blocks và chứa mật ong và đôi khi là Larva (ấu trùng)</summary></details></li></ul><ul id="d940729b-e357-4768-8296-99cff98c1fee" class="toggle"><li><details open=""><summary>Phá hủy ấu trùng và triệu hồi Queen bee (boss)</summary></details></li></ul><ul id="1d96c69d-4e76-4605-996a-f21794a0220f" class="toggle"><li><details open=""><summary>Hiếm khi có số lượng Bee Hive xuất hiện gần nhau</summary></details></li></ul></details></li></ul><ul id="752359e8-c022-48d6-90f4-d53e9d7c525a" class="toggle"><li><details open=""><summary>Granite Cave</summary><figure id="1288f238-6219-8042-9e67-c7926fe1e164" class="image"><a href="BiomeBannerGranite.webp"><img style="width:816px" src="BiomeBannerGranite.webp"/></a></figure><ul id="bb26bab5-235d-4ef4-b1e7-f2951ed8ecd2" class="toggle"><li><details open=""><summary>Làm từ Granite Blocks, khá là rộng với các ghề đá và nền đất phân tán ngẫu nhiên</summary></details></li></ul><ul id="5f4c6324-ea85-4352-8e45-6015ad4546e1" class="toggle"><li><details open=""><summary>Các hang Granite mang nền granite và chứa các Granite Elementals và Granite Golems</summary></details></li></ul></details></li></ul><ul id="ff9762aa-76c3-4599-917f-33386795322b" class="toggle"><li><details open=""><summary>Marble Cave</summary><figure id="1288f238-6219-8020-b10b-d496b5db76ef" class="image"><a href="BiomeBannerMarble.webp"><img style="width:864px" src="BiomeBannerMarble.webp"/></a></figure><ul id="cb67ccc1-29a5-4f36-ad63-fe127924f837" class="toggle"><li><details open=""><summary>Là khu vực hang theo chiều ngang và làm hoàn toàn từ Marble Blocks</summary><p id="9aa287e9-2a6e-4b31-b1cd-a660fbcc6e22" class="">
+</p></details></li></ul><ul id="bd0309af-22b8-4d86-a6ae-ceed9fe87fbb" class="toggle"><li><details open=""><summary>Chứa các kẻ địch mang màu sắc Hy Lạp cổ đại như Hoplites và Medusas</summary></details></li></ul></details></li></ul><ul id="435e13f8-d3a5-4257-ad4f-000f7b46cea4" class="toggle"><li><details open=""><summary>Graveyard</summary><figure id="1288f238-6219-8036-9f12-c3c17808498a" class="image"><a href="BiomeBannerGraveyard.webp"><img style="width:816px" src="BiomeBannerGraveyard.webp"/></a></figure><ul id="d516c953-d0d6-43ad-b8a4-15d0b05d8782" class="toggle"><li><details open=""><summary>Hình thành ở các cụm Gravestones lớn</summary></details></li></ul><ul id="6bd09f2e-93e0-4764-b157-947c2d281335" class="toggle"><li><details open=""><summary>Tạo ra Ecto Mist và spawn các kẻ địch như Ravens, Ghosts và Maggot Zombies,…</summary></details></li></ul><ul id="caab4afe-255a-4fc0-95dd-e1bd9d3ed18b" class="toggle"><li><details open=""><summary>NPC có nhà ở đây có thể bán các vật phẩm quý giá</summary></details></li></ul></details></li></ul><ul id="6e734139-ddc4-4d98-8fe5-903ec23320b2" class="toggle"><li><details open=""><summary>Oasis</summary><figure id="1288f238-6219-8087-a602-f4cfe6279496" class="image"><a href="BiomeBannerOasis.webp"><img style="width:912px" src="BiomeBannerOasis.webp"/></a></figure><ul id="43427797-7b40-43a3-951a-69b3c9e9b0e7" class="toggle"><li><details open=""><summary>Spawn ở sa mạc</summary></details></li></ul><ul id="7aa17e14-951b-47a0-9dcc-7b0d92fe498e" class="toggle"><li><details open=""><summary>Gồm các Palm trees (cây cọ) quanh một hồ nước ngọt ở giữa</summary></details></li></ul><ul id="33b6d67b-cac3-42ee-a3fc-a1b64853e591" class="toggle"><li><details open=""><summary>Dùng để câu cá hoặc dành các NPC thích nước</summary></details></li></ul></details></li></ul><ul id="4eef8ef3-eb8b-4c26-84a8-fcb12571d658" class="toggle"><li><details open=""><summary>Jungle Temple</summary><figure id="1288f238-6219-8030-9da1-d176a4e9efaa" class="image"><a href="BiomeBannerJungleTemple.webp"><img style="width:816px" src="BiomeBannerJungleTemple.webp"/></a></figure><ul id="4c156a6f-c962-48b7-8c81-62f116735260" class="toggle"><li><details open=""><summary>Là một loại hình kiến trúc lớn spawn ở sâu trong Underground Jungle</summary></details></li></ul><ul id="c2bf3be2-ef0f-4fbf-b8a2-e81646903e79" class="toggle"><li><details open=""><summary>Gồm nhiều kẻ địch mạnh và chỉ đến được sau khi đánh bại Plantera (sử dụng Temple Key để mở khóa cửa)</summary></details></li></ul><ul id="4c74d038-e2f2-45e0-8ff0-da9d28523659" class="toggle"><li><details open=""><summary>Ở buồng lớn nhất, có một Lihzahrd Altar có thể spawn Golem (sử dụng Lihzahrd Power Cell)</summary></details></li></ul></details></li></ul><ul id="9ed2f3f1-0b1c-4a91-98a9-df7d652a5f0a" class="toggle"><li><details open=""><summary>Meteorite</summary><figure id="1288f238-6219-80b6-b1a2-c5d9a3a0a044" class="image"><a href="BiomeBannerMeteor.webp"><img style="width:816px" src="BiomeBannerMeteor.webp"/></a></figure><ul id="c8db5956-17e1-49d7-a40b-15e8c4f423e2" class="toggle"><li><details open=""><summary>Khi đánh bại Eater of Worlds hoặc Brain of Cthulhu / Phá vỡ Shadow Orb hoặc Crimson Heart → 50% ngày tiếp theo vào buổi đêm sẽ có một Meteorite với tin nhắn “A meteorite has landed” (một thiên thạch nhỏ đã xuất hiện)</summary></details></li></ul><ul id="7a0bc53b-d0f6-44da-980e-79b73e0b831f" class="toggle"><li><details open=""><summary>Thiên thạch sẽ va xuống mặt đất và biến khu vực đó thành một rãnh sâu với 3 lớp còn các block xung quanh khu vực sẽ bị phá hủy hoặc biến thành Meteorite ore</summary></details></li></ul><ul id="a2e37d16-15c6-41ce-bdb4-dc3b6982399c" class="toggle"><li><details open=""><summary>Meteorite ore sẽ đốt kẻ địch với Burning debuff khi tiếp xúc, trừ khi người chơi có một accessory để giảm sát thương hoặc sử dụng Obsidian Skin Potion</summary></details></li></ul><ul id="a5de0bc3-d5f3-4b9d-9f34-c306b4396239" class="toggle"><li><details open=""><summary>Để khai thác yêu cầu người chơi sở hữu 50% sức mạnh pickaxe</summary></details></li></ul></details></li></ul><ul id="f8358eee-aa46-4705-979c-64875e12cdf6" class="toggle"><li><details open=""><summary>Spider Cave</summary><figure id="1288f238-6219-8047-b027-d26d84f26fec" class="image"><a href="BiomeBannerSpiderCave.webp"><img style="width:768px" src="BiomeBannerSpiderCave.webp"/></a></figure><ul id="eb42b39a-35ca-4f2b-b857-f1ce832029bf" class="toggle"><li><details open=""><summary>Đặc trưng với nền đen và vô số mạng nhện, khu vực này sẽ spawn ra Wall Creepers ở pre-Hardmode và Black Recluses ở Hardmode</summary></details></li></ul><ul id="7c435ebf-0ac8-423e-95e2-6241044b914c" class="toggle"><li><details open=""><summary>Cobwebs (mạng nhện) mọc lại cực kì nhanh</summary></details></li></ul><ul id="cb2bf1c1-f317-4486-885b-e7f3319ac9c9" class="toggle"><li><details open=""><summary>Spider Nest (ổ nhện) là nơi duy nhất người chơi có thể tìm thấy Web Covered Chests (hòm bao bọc bởi mạng nhện) → là nơi duy nhất để sở hữu Web Slinger</summary></details></li></ul><ul id="2aa41e80-7d50-4f74-a5ba-67e55b585683" class="toggle"><li><details open=""><summary>Stylist NPC có thể được tìm thấy ở biome này</summary></details></li></ul></details></li></ul><ul id="9116830e-35c8-480d-b8b3-d9993e4988ee" class="toggle"><li><details open=""><summary>Town</summary><figure id="1288f238-6219-8059-93e3-c88fd395511a" class="image"><a href="BiomeBannerTown.webp"><img style="width:864px" src="BiomeBannerTown.webp"/></a></figure><ul id="448312a5-69c5-4c05-a527-e2e377ac3937" class="toggle"><li><details open=""><summary>Là biome mini mà người chơi có thể tạo ra khi có 3 NPC trở lên ở gần phạm vi</summary></details></li></ul><ul id="f19e96f0-529c-41c1-880d-8064eb8ec950" class="toggle"><li><details open=""><summary>Sẽ không spawn kẻ địch nữa trừ khi có sự kiện nào đó</summary></details></li></ul><ul id="0f5555d4-ed4e-4b34-8506-25e370fc244b" class="toggle"><li><details open=""><summary>NPC không cần thiết phải có nhà để trở thành một Town</summary></details></li></ul></details></li></ul></details></li></ul><ul id="537f7d7d-81f2-407c-b00f-4fd350729360" class="toggle"><li><details open=""><summary>Micro-Biomes (Biome siêu nhỏ)</summary><ul id="7c4055e2-9b40-4601-a12c-3f54265aa228" class="toggle"><li><details open=""><summary>Campsite (khu cắm trại)</summary><figure id="1288f238-6219-8033-8b3f-e38fd5aff198" class="image"><a href="Campsite.webp"><img style="width:295px" src="Campsite.webp"/></a></figure><ul id="face76e1-95fa-438c-a735-b41dac5967d4" class="toggle"><li><details open=""><summary>Có thể tìm thấy ở Underground và Cavern</summary></details></li></ul><ul id="17a80e51-1147-4de0-a256-fc25d00c9f71" class="toggle"><li><details open=""><summary>Thường bao gồm Campfire, Silver Coin Pile và các mảnh xương còn sót lại</summary></details></li></ul><ul id="258217d9-c11b-4828-adf7-c1e31029f93a" class="toggle"><li><details open=""><summary>Rộng tầm 12-20 blocks, không cao</summary></details></li></ul></details></li></ul><ul id="ff796e77-9ce1-4fe7-955a-27e93b984545" class="toggle"><li><details open=""><summary>Flower Patch (vườn hoa)</summary><figure id="1288f238-6219-80ec-bf09-f911c12b1267" class="image"><a href="Flower_Patch%201.webp"><img style="width:651.953125px" src="Flower_Patch%201.webp"/></a></figure><ul id="8e36f0fd-4785-4fb8-94a0-1c7a871eb99e" class="toggle"><li><details open=""><summary>Một mảnh đất nhỏ toàn hoa</summary></details></li></ul></details></li></ul><ul id="7dcbab40-7ce9-4e1f-88b2-ad8101b32d73" class="toggle"><li><details open=""><summary>Gemstone Cave (hang đá quý)</summary><figure id="1288f238-6219-80f5-86ee-c1bda55f4401" class="image"><a href="Diamond_chamber.webp"><img style="width:404px" src="Diamond_chamber.webp"/></a></figure><ul id="a48d66ce-0b5e-40ff-b544-04e481d63635" class="toggle"><li><details open=""><summary>Là hang tập trung nhiều mảnh đá quý của một hay nhiều loại</summary></details></li></ul><ul id="ccdf182c-d1c8-4466-ae5b-b0e4e2f84ceb" class="toggle"><li><details open=""><summary>Có nền riêng biệt gồm nhiều gem cùng màu</summary></details></li></ul></details></li></ul><ul id="f24400be-3b6a-497d-9d52-965ddf81cff8" class="toggle"><li><details open=""><summary>Moss Chamber (phòng chứa rêu)</summary><figure id="1288f238-6219-8068-828a-ec7c0b494474" class="image"><a href="Moss_Chamber.webp"><img style="width:232px" src="Moss_Chamber.webp"/></a></figure><ul id="82553fa5-e4b6-468e-8d7a-1cb459cbc2dc" class="toggle"><li><details open=""><summary>Ở Underground và các lớp Cavern chứa một loại màu của Moss kết hợp với một nền giống màu </summary></details></li></ul></details></li></ul><ul id="b0addb7d-3257-472c-8f8f-243f62c3fea0" class="toggle"><li><details open=""><summary>Thin Ice Patch (mảnh băng mỏng)</summary><figure id="1288f238-6219-8056-85a2-d41815d66b44" class="image"><a href="Thin_ice_patch.webp"><img style="width:503.1875px" src="Thin_ice_patch.webp"/></a></figure><ul id="72c29d05-afdc-46d8-8023-040d0d1b9985" class="toggle"><li><details open=""><summary>Biome nhỏ có thể tìm thấy ở Ice biome làm hoàn toàn từ Thin ice (băng mỏng) và đôi khi là ore vein</summary></details></li></ul></details></li></ul></details></li></ul><ul id="3e018ae4-a858-4499-a5bb-8d1fe52de7f5" class="toggle"><li><details open=""><summary>Treasure Rooms (phòng chứa rương</summary><p id="51b2ee68-0229-4776-94e5-c01f125ad106" class="">Là những phòng chứa rương xuất hiện khi khởi tạo thế giới, nhìn như được làm bởi con người, chứa loot và nội thất</p><ul id="f48de1dc-9aa2-4d4c-a242-d02c216ae321" class="toggle"><li><details open=""><summary>Enchanted Sword Shrine</summary><figure id="1288f238-6219-802b-9fa6-e1b5950cf66b" class="image"><a href="BiomeBannerEnchantedSwordShrine.webp"><img style="width:816px" src="BiomeBannerEnchantedSwordShrine.webp"/></a></figure><ul id="01e1ef3c-fa00-4993-bd43-86a1eb3edc59" class="bulleted-list"><li style="list-style-type:disc">Các Đền Thờ Kiếm Phép (Enchanted Sword Shrine) là những đặc điểm địa hình xuất hiện dưới dạng các hang nhỏ bên dưới bề mặt. Chúng có thể tạo ra một ống dẫn hẹp dẫn vào đỉnh của hang. Phần nền của hang được làm từ Tường Hoa và có một ngọn đồi nhỏ với các vũng nước ở hai bên. Trên đỉnh ngọn đồi có một thanh kiếm trong đá như một vật thể nền. Chúng xuất hiện ở các lớp bề mặt hoặc ngầm trong địa hình đất hoặc đá.</li></ul></details></li></ul><ul id="99448370-f0c3-4685-bfca-57a4ac8f7bc0" class="toggle"><li><details open=""><summary>Floating Islands</summary><figure id="1288f238-6219-8050-a67a-fba3f94d548f" class="image"><a href="BiomeBannerFloatingIsland.webp"><img style="width:816px" src="BiomeBannerFloatingIsland.webp"/></a></figure><ul id="be9c4fb7-e9c0-4fe9-8c6a-895a4275e32f" class="bulleted-list"><li style="list-style-type:disc">Các Đảo Nổi và Hồ Nổi (Floating Islands) là những cấu trúc nổi nằm cao trên đất liền chính của thế giới và có thể được tìm thấy lên đến Không gian. Vị trí của chúng khiến chúng dễ bị tấn công bởi Harpy trong giai đoạn trước Hardmode và Wyvern cũng như Arch Wyvern trong Hardmode. Ở độ cao như vậy, người chơi sẽ có trọng lực giảm khi di chuyển trên đó. Cả hai đều tương tự về kích thước và vị trí, và đều nằm trên các khối Đám Mây và Đám Mây Mưa với Tường Đám Mây ở nền.</li></ul></details></li></ul><ul id="b3e39da5-cc8a-4e88-89a0-4dd86004593d" class="toggle"><li><details open=""><summary>Jungle Shrine</summary><figure id="1288f238-6219-8079-91df-f625edabb776" class="image"><a href="Shrine.webp"><img style="width:272px" src="Shrine.webp"/></a></figure><ul id="5be6db35-21e3-4e13-93df-d039a2ba2076" class="bulleted-list"><li style="list-style-type:disc">Đền Thờ Rừng (Jungle Shrine) là các cấu trúc được tạo ra khi thế giới hình thành ở các khu vực ngẫu nhiên trong Khu Rừng Ngầm. Một đền thờ chứa một Rương Dây Leo, trong đó có một vật phẩm đặc trưng của Khu Rừng Ngầm, cũng như nhiều vật phẩm khác thuộc Khu Ngầm (Underground) và Hang Động (Cavern). Tất cả các Đền Thờ Rừng trong một thế giới đều hoàn toàn được xây dựng từ Gạch Ngũ Sắc, Gỗ Gụ Giàu, Gạch Thiếc, Gạch Vàng, hoặc Gạch Đất Bùn và chứa một Ngọn Đuốc Xanh đã được đặt sẵn.</li></ul></details></li></ul><ul id="5c2408e4-b915-4b0e-bb52-7b25a8793193" class="toggle"><li><details open=""><summary>Living Tree</summary><figure id="1288f238-6219-8048-b7b1-e21a477d8dac" class="image"><a href="BiomeBannerLivingTree.webp"><img style="width:1008px" src="BiomeBannerLivingTree.webp"/></a></figure><ul id="447e83e5-c356-4d73-92be-be5236f2fba8" class="bulleted-list"><li style="list-style-type:disc">Cây Sống (Living Tree)là các cấu trúc lớn có hình dạng giống cây, được tạo ra khi thế giới hình thành. Khác với các cây thông thường, Cây Sống được xây dựng từ Gỗ Sống và Khối Lá ở tiền cảnh, thay vì là các vật thể ở hậu cảnh mà nhân vật có thể đi qua.</li></ul></details></li></ul><ul id="8eb8ec63-126b-40cf-8b9e-2c87ad847aae" class="toggle"><li><details open=""><summary>Living Mahogany Tree</summary><figure id="1288f238-6219-80e4-a4c6-efcaed80d46d" class="image"><a href="Living_Mahogany_Tree.webp"><img style="width:651.984375px" src="Living_Mahogany_Tree.webp"/></a></figure><ul id="534a8889-1124-4bd8-a4b3-bb58c5398689" class="bulleted-list"><li style="list-style-type:disc">Cây Gỗ Gụ Sống (Living Mahogany Tree) là các cấu trúc lớn có hình dạng giống cây, được tạo ra khi thế giới hình thành trong Khu Rừng Ngầm. Thân của Cây Gỗ Gụ Sống là rỗng, và (khác với Cây Sống) luôn chứa một Rương Dây Leo ở gốc cây.</li></ul></details></li></ul><ul id="992b8015-146e-46a1-bfd3-cf12d0be88a9" class="toggle"><li><details open=""><summary>Pyramid</summary><figure id="1288f238-6219-80fd-80b7-d7fc0a6458c5" class="image"><a href="Pyramid.webp"><img style="width:651.984375px" src="Pyramid.webp"/></a></figure><ul id="b5be1d4c-5be6-4df5-a85e-844014fb6744" class="bulleted-list"><li style="list-style-type:disc">Kim tự tháp (Pyramid) là một cấu trúc nằm trong sa mạc(Desert), được tạo thành từ Gạch Sa thạch. Kim tự tháp hiếm gặp, và hầu hết các thế giới được tạo ra sẽ không có chúng.</li></ul><ul id="12a5ce99-ba68-41b0-8e0a-9363771670f4" class="bulleted-list"><li style="list-style-type:disc">Phần lớn của Kim tự tháp nằm chôn dưới lòng đất, với đỉnh của nó đôi khi nhô ra một chút trên bề mặt Sa mạc. Kim tự tháp có một đường hầm ngoằn ngoèo dẫn đến một căn phòng kho báu, nơi có thể chứa các vật phẩm quý hiếm. Ngoài các kho báu độc đáo, chúng còn được trang trí với các biểu ngữ độc đáo và nhiều loại Bình cùng các Kho Đồng Xu.</li></ul><p id="1288f238-6219-80ed-b39d-eb222e98e70f" class="">
+</p></details></li></ul><ul id="8725e004-f3a4-4a9b-88c7-15f1a2a32dbd" class="toggle"><li><details open=""><summary>Ruined House</summary><figure id="1288f238-6219-8039-bce2-d3b15b19a29a" class="image"><a href="RuinedHouse.webp"><img style="width:651.984375px" src="RuinedHouse.webp"/></a></figure><ul id="021e66d4-8456-46fc-915e-8761678edc84" class="bulleted-list"><li style="list-style-type:disc">Nhà đổ nát (Ruined House)là các cấu trúc trong Thế giới Ngầm(The Under World), được tạo ra khi thế giới được hình thành. Chúng xuất hiện dưới dạng những tòa tháp được xây từ Gạch Obsidian (với Tường Gạch Obsidian) hoặc Gạch Hellstone (với Tường Gạch Hellstone), mỗi tòa gồm nhiều phòng, khiến chúng hơi giống các tòa nhà chung cư. Những ngôi nhà này thường bị ngập một phần (đôi khi hoàn toàn) trong dung nham. Nhà đổ nát xuất hiện khá thường xuyên, nhưng chỉ ở 50% phần giữa của Thế giới Ngầm; không có Nhà đổ nát nào ở 25% phần cuối bên trái và bên phải của Thế giới Ngầm.</li></ul></details></li></ul><ul id="7c85c8e6-df88-4e57-b65f-61ee28641bc9" class="toggle"><li><details open=""><summary>Underground Cabin</summary><figure id="1288f238-6219-80c7-b55b-d4c97a3d3d11" class="image"><a href="Ice_Chest_Terraria.webp"><img style="width:608px" src="Ice_Chest_Terraria.webp"/></a></figure><ul id="fc596243-00c2-4832-8aca-a0fb29f8162b" class="bulleted-list"><li style="list-style-type:disc">Các căn nhà nhỏ (cabins) có thể được sử dụng làm nơi ở nếu chúng được &#x27;sửa chữa&#x27; theo nghĩa là vá các lỗ trên tường và bổ sung các đồ nội thất còn thiếu. Điều này không yêu cầu người chơi phải phá bỏ các bức tường hoặc đồ nội thất hiện có rồi thay thế chúng. Ngoài ra, hoàn toàn có thể phá hủy toàn bộ căn nhà nhỏ và sử dụng vật liệu để xây dựng một ngôi nhà ở nơi khác.</li></ul><ul id="f4b55385-22f7-47d7-8d6c-234af8139890" class="bulleted-list"><li style="list-style-type:disc">Đèn chùm, nếu có, thường được tắt; chúng có thể hoặc không được kết nối với công tắc có thể bật chúng lên, nhưng trong bất kỳ trường hợp nào, việc phá vỡ và thay thế chúng sẽ làm cho chúng sáng.</li></ul><ul id="86daf900-9b2d-4234-b7d0-1d4336dbc87a" class="bulleted-list"><li style="list-style-type:disc">Các căn nhà nhỏ thường được đặt bẫy, bao gồm cả các tượng đã kích hoạt được nối với các tấm áp lực, nhưng các mạch dây cung cấp năng lượng cho chúng thường không hoàn chỉnh và không gây nguy hiểm cho người chơi.</li></ul></details></li></ul></details></li></ul><p id="cfa623e7-1109-435f-9ac5-b9a566803565" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
